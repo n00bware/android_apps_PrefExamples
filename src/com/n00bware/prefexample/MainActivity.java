@@ -17,6 +17,7 @@
 package com.n00bware.prefexample;
 
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -32,12 +33,15 @@ public class MainActivity extends PreferenceActivity implements
         Preference.OnPreferenceChangeListener {
 
     private String PREF_EDIT_HOLDER; //Holds new value of EditTextPreference
+
     private static final String PREF_EDIT_TEXT = "pref_edit_text"; //handle to find this EditTextPreference (android:key)
     private static final String TAG = "PrefExample"; //TAG to identify app to logcat
     private static final String PREF_LIST = "pref_list"; //handle to find the ListPreference (android:key)
+    private static final String PREF_CHECKBOX = "pref_checkbox"; //handle to find the CheckBoxPreference (android:key)
 
     private EditTextPreference mEditTextPref; //Object used to reference EditTextPreference
     private ListPreference mListPref; //Object used to reference ListPreference
+    private CheckBoxPreference mCheckBoxPref; //Object used to reterence CheckBoxPreference
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +87,11 @@ public class MainActivity extends PreferenceActivity implements
         //this is simplier
         mListPref = (ListPreference) prefSet.findPreference(PREF_LIST);
         mListPref.setOnPreferenceChangeListener(this);
+
+        mCheckBoxPref = (CheckBoxPreference) prefSet.findPreference(PREF_CHECKBOX);
+        boolean check = mCheckBoxPref.isChecked();
+        mCheckBoxPref.setChecked(check);
+
     }
 
     public boolean onPreferenceChange(Preference pref, Object newValue) {
@@ -109,5 +118,31 @@ public class MainActivity extends PreferenceActivity implements
             }
         return false; //pref selected but not newValue so return false
         }
+    }
+
+    //This is an @Override because onPreferneceTreeClick is from a parent class
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen prefScreen, Preference prefS) {
+        boolean value;
+        if (prefS == mCheckBoxPref) {
+            //do work that happens independant of the on/off state
+
+            //I wanted to provide an example of work that can be done
+            //so for this example we will send to values GoVols & CheckedOff
+            //as strings to the method ezBOX() since ezBOX is a boolean
+            //we can just use its return value
+            value = mCheckBoxPref.isChecked();
+            return ezBOX(String.valueOf(value ? "GoVols" : "CheckedOff"));
+        }
+    return false;
+    }
+
+    private boolean ezBOX(String onORoff) {
+        //do work that is dependant of the on/off state of mCheckBoxPref
+
+        //this is a super simple example but it shows how to
+        //recieve values from a checkbox and act on them
+        Toast.makeText(MainActivity.this, "Yo your choice is " + onORoff, Toast.LENGTH_LONG).show();
+        return true;
     }
 }

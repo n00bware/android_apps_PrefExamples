@@ -33,4 +33,10 @@
     <string name="pref_list_title">ListPreference title</string>
     <string name="pref_list_summary">ListPreference summary</string>
     <string name="pref_list_dialogTitle">dialog title text</string>
+
+    <!-- CheckBoxPreference -->
+    <string name="pref_checkbox_title">CheckBox title</string>
+    <!-- use these to tell your users what to expect when the click -->
+    <string name="pref_checkbox_summaryOff">summaryOff displayed when unchecked</string>
+    <string name="pref_checkbox_summaryOn">summaryOn displayed when checked</string>
 </resources>

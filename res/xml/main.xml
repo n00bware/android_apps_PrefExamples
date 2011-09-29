@@ -72,6 +72,22 @@
          *                  this can be changed programatically later to disable
         -->
 
+        <CheckBoxPreference android:key="pref_checkbox"
+            android:title="@string/pref_checkbox_title"
+            android:summaryOn="@string/pref_checkbox_summaryOn"
+            android:summaryOff="@string/pref_checkbox_summaryOff" />
+        <!--
+         *  let me explain what we just did
+         *
+         *  android:key a handle we can use to reference this from java
+         *  android:title it the name on the preference seen before
+         *  android:summaryOn summary displayed while checked
+         *  android:summaryOff summary displayed when unchecked
+         *  
+         *  you can instead set summary for consistant display un/checked ie:
+         *  android:summary="@string/pref_checkbox_summary"
+        -->
+
     <!-- Don't forget to close all tags you open -->
     </PreferenceCategory>
 </PreferenceScreen>
