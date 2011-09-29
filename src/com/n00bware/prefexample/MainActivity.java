@@ -32,10 +32,11 @@ import android.widget.Toast;
 public class MainActivity extends PreferenceActivity implements
         Preference.OnPreferenceChangeListener {
 
+    private static final String TAG = "PrefExample"; //TAG to identify app to logcat
+
     private String PREF_EDIT_HOLDER; //Holds new value of EditTextPreference
 
     private static final String PREF_EDIT_TEXT = "pref_edit_text"; //handle to find this EditTextPreference (android:key)
-    private static final String TAG = "PrefExample"; //TAG to identify app to logcat
     private static final String PREF_LIST = "pref_list"; //handle to find the ListPreference (android:key)
     private static final String PREF_CHECKBOX = "pref_checkbox"; //handle to find the CheckBoxPreference (android:key)
 

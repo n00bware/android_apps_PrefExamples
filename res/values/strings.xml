@@ -20,7 +20,11 @@
     <!-- General application strings -->
     <string name="app_name">Preferences Examples</string>
     <string name="main_title_head">PrefExamples</string>
-    <string name="edit_text_cat_title">EditTextPreference</string>
+
+    <!-- Category titles -->
+    <string name="edit_text_cat_title">EditTextPreference category</string>
+    <string name="list_cat_title">ListPreference category</string>
+    <string name="checkbox_cat_title">CheckBoxPreference category</string>
 
     <!-- EditTextPreference -->
     <string name="pref_edit_text_title">EditTextPreference title</string>

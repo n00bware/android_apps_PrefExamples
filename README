@@ -1,0 +1,38 @@
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 
+                    Version 2, December 2004 
+
+ Copyright (C) 2004 Sam Hocevar <sam@hocevar.net> 
+
+ Everyone is permitted to copy and distribute verbatim or modified 
+ copies of this license document, and changing it is allowed as long 
+ as the name is changed. 
+
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 
+   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION 
+
+  0. You just DO WHAT THE FUCK YOU WANT TO. 
+
+^I love the WTFPL license^
+
+Preference Examples by n00bware
+
+I got tired trying to figure out the docs from
+    http://developer.android.com/reference/android/preference/package-summary.html
+
+SO I wrote an extremely simple app that shows some of the possible
+uses of the standard android frameworks implementation of preferences
+
+I choose the WTFPL license for good reason I really wanted to people to use these
+examples to make their life easier
+
+I kept the string names and method names simple and descriptive (they can be anything)
+
+--> Make note of the branches I placed each preference in it's own branch
+        the branches are done in order (default branch is EditTextPreference and
+        was the first example)
+
+Examples in order:
+EditTextPreference ~/\~ https://github.com/n00bware/android_apps_PrefExamples
+ListPreference ~{-}~ https://github.com/n00bware/android_apps_PrefExamples/tree/ListPreference
+CheckBoxPreference ~\/~ https://github.com/n00bware/android_apps_PrefExamples/tree/CheckBoxPreference
+

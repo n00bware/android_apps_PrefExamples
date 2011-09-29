@@ -46,7 +46,10 @@
          *  android:defaultValue text appears in the box apon open
          *                  hint won't appear till after default disapears
         -->
+    </PreferenceCategory>
 
+    <PreferenceCategory android:key="list_category"
+        android:title="@string/list_cat_title">
         <!--
          * on to my favorite ListPreference
          * @array indicates we use res/values/arrays.xml to contain our lists
@@ -71,6 +74,10 @@
          *  android:enabled true means the preference is enabled by default
          *                  this can be changed programatically later to disable
         -->
+    </PreferenceCategory>
+
+    <PreferenceCategory android:key="checkbox_category"
+        android:title="@string/checkbox_cat_title">
 
         <CheckBoxPreference android:key="pref_checkbox"
             android:title="@string/pref_checkbox_title"
