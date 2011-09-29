@@ -18,6 +18,7 @@ package com.n00bware.prefexample;
 
 import android.os.Bundle;
 import android.preference.EditTextPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
@@ -33,8 +34,10 @@ public class MainActivity extends PreferenceActivity implements
     private String PREF_EDIT_HOLDER; //Holds new value of EditTextPreference
     private static final String PREF_EDIT_TEXT = "pref_edit_text"; //handle to find this EditTextPreference (android:key)
     private static final String TAG = "PrefExample"; //TAG to identify app to logcat
+    private static final String PREF_LIST = "pref_list"; //handle to find the ListPreference (android:key)
 
-    private EditTextPreference mEditTextPref; //Object used to reference preference
+    private EditTextPreference mEditTextPref; //Object used to reference EditTextPreference
+    private ListPreference mListPref; //Object used to reference ListPreference
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,23 +79,35 @@ public class MainActivity extends PreferenceActivity implements
          * this lets us use the onPreferenceChange method below
          */
         mEditTextPref.setOnPreferenceChangeListener(this);
+
+        //this is simplier
+        mListPref = (ListPreference) prefSet.findPreference(PREF_LIST);
+        mListPref.setOnPreferenceChangeListener(this);
     }
 
     public boolean onPreferenceChange(Preference pref, Object newValue) {
 
-        //this is an over simplization but works for our purpose here
-        //the next example (ListPreference) will make the reciever more
-        //dynamic as it is we just do what is sent no matter what
-        if (pref != null) {
-            if (newValue != null) {
-
+        //we want to handle "unknown" differently than anything else
+        //so we take care of it first
+        if (newValue.toString().equals("unknown")) {
+            //do work
+            Log.d(TAG, "method recieved jinx **DO SOMETHING SPECIAL**");
+            Toast.makeText(MainActivity.this, "method recieved \"jinx\" **DO SOMETHING SPECIAL**", Toast.LENGTH_LONG).show();
+            return true; //we used the valuse so return true
+        //now we handle everything that doesn't have a newValue of "jinx"
+        } else {
+            if (pref == mEditTextPref) {
                 //do work
                 Toast.makeText(MainActivity.this, "You chose " + pref + " with a new value of " + newValue.toString(), Toast.LENGTH_LONG).show();
+                return true; //we used the values so return true
 
-            return true; //we used the values so return true
+            //handle all the ListPreference values except "jinx"
+            } else if (pref == mListPref) {
+                //do work
+                Toast.makeText(MainActivity.this, "You chose " + pref + " with a new value of " + newValue.toString(), Toast.LENGTH_LONG).show();
+                return true; //we used the values so return true
             }
         return false; //pref selected but not newValue so return false
         }
-    return false; //nothing new so return false
     }
 }

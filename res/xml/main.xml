@@ -47,6 +47,31 @@
          *                  hint won't appear till after default disapears
         -->
 
+        <!--
+         * on to my favorite ListPreference
+         * @array indicates we use res/values/arrays.xml to contain our lists
+        -->
+        <ListPreference android:key="pref_list"
+            android:dialogTitle="@string/pref_list_dialogTitle"
+            android:title="@string/pref_list_title" 
+            android:summary="@string/pref_list_summary"
+            android:entries="@array/entries_list_explain"
+            android:entryValues="@array/entries_list"
+            android:enabled="true" />
+        <!--
+         *  let me explain what we just did
+         *
+         *  android:key a handle we can use to reference this from java
+         *  android:dialogTitle dialog title while picking from entries
+         *  android:title it the name on the preference seen before
+         *                the user selects to enter text
+         *  android:summary the summary on the preference below android:title
+         *  android:entries human readable explaination of entryValues
+         *  android:entryValues what ever value you need to pass to your methods
+         *  android:enabled true means the preference is enabled by default
+         *                  this can be changed programatically later to disable
+        -->
+
     <!-- Don't forget to close all tags you open -->
     </PreferenceCategory>
 </PreferenceScreen>

@@ -28,4 +28,9 @@
     <string name="pref_edit_text_default">Default Value</string>
     <string name="pref_edit_text_dialogTitle">dialog title text</string>
     <string name="pref_edit_text_hint">Ghostly hint</string>
+
+    <!-- ListPreference -->
+    <string name="pref_list_title">ListPreference title</string>
+    <string name="pref_list_summary">ListPreference summary</string>
+    <string name="pref_list_dialogTitle">dialog title text</string>
 </resources>
