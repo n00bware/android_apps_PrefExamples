@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ *
+ *            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 
+ *                    Version 2, December 2004 
+ *
+ * Copyright (C) 2004 Sam Hocevar <sam@hocevar.net> 
+ *
+ * Everyone is permitted to copy and distribute verbatim or modified 
+ * copies of this license document, and changing it is allowed as long 
+ * as the name is changed. 
+ *
+ *            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 
+ *   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION 
+ *
+ *  0. You just DO WHAT THE FUCK YOU WANT TO. 
+-->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Categories can be used to seperate and organize functions -->
+    <PreferenceCategory android:key="edit_text_category"
+        android:title="@string/edit_text_cat_title">
+
+        <!-- 
+         * I concider EditTextPreference to be the hardest to work with
+         * so lets start there
+        -->
+        <EditTextPreference android:key="pref_edit_text"
+            android:dialogTitle="@string/pref_edit_text_dialogTitle"
+            android:title="@string/pref_edit_text_title"
+            android:summary="@string/pref_edit_text_summary"
+            android:singleLine="true"
+            android:hint="@string/pref_edit_text_hint"
+            android:defaultValue="@string/pref_edit_text_default" />
+        <!--
+         *  let me explain what we just did
+         *
+         *  android:key a handle we can use to reference this from java
+         *  android:dialogTitle appears on top of the dialog as user enters text
+         *  android:title it the name on the preference seen before
+         *                the user selects to enter text
+         *  android:summary the summary on the preference below android:title
+         *  android:singleLine only allow one line of text == 20chars
+         *  android:hint the ghostly text before user enters text
+         *  android:defaultValue text appears in the box apon open
+         *                  hint won't appear till after default disapears
+        -->
+
+    <!-- Don't forget to close all tags you open -->
+    </PreferenceCategory>
+</PreferenceScreen>
