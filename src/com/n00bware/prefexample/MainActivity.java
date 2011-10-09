@@ -16,11 +16,14 @@
 
 package com.n00bware.prefexample;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.text.InputFilter;
@@ -28,6 +31,7 @@ import android.text.InputFilter.LengthFilter;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
+
 
 public class MainActivity extends PreferenceActivity implements
         Preference.OnPreferenceChangeListener {
@@ -39,6 +43,9 @@ public class MainActivity extends PreferenceActivity implements
     private static final String PREF_EDIT_TEXT = "pref_edit_text"; //handle to find this EditTextPreference (android:key)
     private static final String PREF_LIST = "pref_list"; //handle to find the ListPreference (android:key)
     private static final String PREF_CHECKBOX = "pref_checkbox"; //handle to find the CheckBoxPreference (android:key)
+    private static final String PREF_ICON = "pref_icon"; //handle to find the PreferenceScreen (android:key)
+
+    private static final String GITHUB = "https://github.com/n00bware/android_apps_PrefExamples";
 
     private EditTextPreference mEditTextPref; //Object used to reference EditTextPreference
     private ListPreference mListPref; //Object used to reference ListPreference
@@ -93,6 +100,13 @@ public class MainActivity extends PreferenceActivity implements
         boolean check = mCheckBoxPref.isChecked();
         mCheckBoxPref.setChecked(check);
 
+        findPreference(PREF_ICON).setOnPreferenceClickListener(
+            new OnPreferenceClickListener() {
+                public boolean onPreferenceClick(Preference prefSet) {
+                    viewGithub();
+                    return true;
+                }
+            });
     }
 
     public boolean onPreferenceChange(Preference pref, Object newValue) {
@@ -146,4 +160,11 @@ public class MainActivity extends PreferenceActivity implements
         Toast.makeText(MainActivity.this, "Yo your choice is " + onORoff, Toast.LENGTH_LONG).show();
         return true;
     }
+
+    private boolean viewGithub() {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(GITHUB));
+        startActivity(browserIntent);
+        return true;
+    }
+
 }

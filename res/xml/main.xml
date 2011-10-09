@@ -16,7 +16,9 @@
  *  0. You just DO WHAT THE FUCK YOU WANT TO. 
 -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:n00bware="http://schemas.android.com/apk/res/com.n00bware.prefexample">
 
     <!-- Categories can be used to seperate and organize functions -->
     <PreferenceCategory android:key="edit_text_category"
@@ -96,5 +98,19 @@
         -->
 
     <!-- Don't forget to close all tags you open -->
+    </PreferenceCategory>
+
+    <PreferenceCategory android:key="icon_category"
+        android:title="@string/icon_cat_title">
+
+        <com.n00bware.prefexample.IconPreferenceScreen
+            android:key="pref_icon"
+            n00bware:icon="@drawable/pref_icon"
+            android:title="@string/pref_icon_title"
+            android:summary="@string/pref_icon_summary">
+            <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.n00bware.prefexample"
+                android:targetClass="com.noobware.prefexample.Github" />
+        </com.n00bware.prefexample.IconPreferenceScreen>
     </PreferenceCategory>
 </PreferenceScreen>

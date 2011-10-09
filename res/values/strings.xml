@@ -25,6 +25,7 @@
     <string name="edit_text_cat_title">EditTextPreference category</string>
     <string name="list_cat_title">ListPreference category</string>
     <string name="checkbox_cat_title">CheckBoxPreference category</string>
+    <string name="icon_cat_title">PreferenceScreen w/icon category</string>
 
     <!-- EditTextPreference -->
     <string name="pref_edit_text_title">EditTextPreference title</string>
@@ -43,4 +44,9 @@
     <!-- use these to tell your users what to expect when the click -->
     <string name="pref_checkbox_summaryOff">summaryOff displayed when unchecked</string>
     <string name="pref_checkbox_summaryOn">summaryOn displayed when checked</string>
+
+    <!-- PreferenceScreen with icon -->
+    <string name="pref_icon_title">PreferenceScreen w/icon</string>
+    <string name="pref_icon_summary">Enough talk show me the code</string>
+
 </resources>
