@@ -19,6 +19,8 @@ package com.n00bware.prefexample;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -39,6 +41,8 @@ public class MainActivity extends PreferenceActivity implements
     private static final String TAG = "PrefExample"; //TAG to identify app to logcat
 
     private String PREF_EDIT_HOLDER; //Holds new value of EditTextPreference
+    private final int MENU_EXAMPLE = 1;
+    private final int MENU_CODE = 2;
 
     private static final String PREF_EDIT_TEXT = "pref_edit_text"; //handle to find this EditTextPreference (android:key)
     private static final String PREF_LIST = "pref_list"; //handle to find the ListPreference (android:key)
@@ -46,6 +50,7 @@ public class MainActivity extends PreferenceActivity implements
     private static final String PREF_ICON = "pref_icon"; //handle to find the PreferenceScreen (android:key)
 
     private static final String GITHUB = "https://github.com/n00bware/android_apps_PrefExamples";
+    private static final String DONATE = "http://bit.ly/oCWMo0";
 
     private EditTextPreference mEditTextPref; //Object used to reference EditTextPreference
     private ListPreference mListPref; //Object used to reference ListPreference
@@ -103,7 +108,7 @@ public class MainActivity extends PreferenceActivity implements
         findPreference(PREF_ICON).setOnPreferenceClickListener(
             new OnPreferenceClickListener() {
                 public boolean onPreferenceClick(Preference prefSet) {
-                    viewGithub();
+                    website(GITHUB);
                     return true;
                 }
             });
@@ -161,10 +166,36 @@ public class MainActivity extends PreferenceActivity implements
         return true;
     }
 
-    private boolean viewGithub() {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(GITHUB));
+    private boolean website(String web) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(web));
         startActivity(browserIntent);
         return true;
+    }
+
+    /*
+     * these booleans will handle when the user selects
+     * a menu hardkey
+     */
+    public boolean onCreateOptionsMenu(Menu menu){
+        boolean result = super.onCreateOptionsMenu(menu);
+        menu.add(0, MENU_DONATE, 0, "Donate").setIcon(R.drawable.paypal_logo);
+        menu.add(0, MENU_CODE, 0, "Show me the code").setIcon(R.drawable.pref_icon);
+        return result;
+    }
+ 
+    /* Handle the menu selection */
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case MENU_DONATE:
+            //do work
+            Toast.makeText(MainActivity.this, "Please donate if you want", Toast.LENGTH_SHORT).show();
+            return website(DONATE);
+        case MENU_CODE:
+            //do work
+            Toast.makeText(MainActivity.this, "Launching github in a webview", Toast.LENGTH_SHORT).show();
+            return website(GITHUB);
+        }
+        return false;
     }
 
 }
